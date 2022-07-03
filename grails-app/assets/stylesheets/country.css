@@ -1,0 +1,9 @@
+.scrollable {
+    height: 42px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+}
+
+/*.scrollable::-webkit-scrollbar{*/
+/*    display: none;*/
+/*}*/

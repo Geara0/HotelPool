@@ -1,0 +1,84 @@
+.custom-buttons {
+    display: flex;
+    justify-content: center;
+    background-color: #efefef;
+    overflow: hidden;
+    padding: 0.3em;
+    -moz-box-shadow: 0 0 3px 1px #aaaaaa;
+    -webkit-box-shadow: 0 0 3px 1px #aaaaaa;
+    box-shadow: 0 0 3px 1px #aaaaaa;
+    margin: 0.1em 0 0 0;
+    border: none;
+    width: min-content;
+}
+
+
+.custom-buttons input,
+.custom-buttons a {
+    background-color: transparent;
+    border: 0;
+    color: #666666;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 0.25em 0;
+    overflow: visible;
+    padding: 0.25em 0.7em;
+    text-decoration: none;
+
+    -moz-border-radius: 0.3em;
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+}
+
+.custom-buttons .delete, .custom-buttons .edit, .custom-buttons .save {
+    background-position: 0.7em center;
+    background-repeat: no-repeat;
+    text-indent: 25px;
+}
+
+.custom-buttons .delete {
+    background-image: url(../images/skin/database_delete.png);
+}
+
+.custom-buttons .edit {
+    background-image: url(../images/skin/database_edit.png);
+}
+
+.custom-buttons .save {
+    background-image: url(../images/skin/database_save.png);
+}
+
+.custom-buttons input:hover, .custom-buttons input:focus,
+.custom-buttons a:hover, .custom-buttons a:focus {
+    background-color: #999999;
+    color: #ffffff;
+    outline: none;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.no-borderradius .custom-buttons input:hover, .no-borderradius .custom-buttons input:focus,
+.no-borderradius .custom-buttons a:hover, .no-borderradius .custom-buttons a:focus {
+    background-color: transparent;
+    color: #444444;
+    text-decoration: underline;
+}
+
+.buttons-form {
+    margin: auto;
+    max-width: fit-content;
+}
+
+/*Лучшее что я смог придумать, размещая кнопки внутри таблицы (всё-таки я не дизайнер)*/
+.buttons-column {
+    margin: auto;
+    min-width: 2cm;
+    max-width: 2cm;
+
+}
+
+.default-label {
+    margin-left: 10%;
+}

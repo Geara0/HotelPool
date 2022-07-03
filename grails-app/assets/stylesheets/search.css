@@ -1,0 +1,31 @@
+.search-box {
+    margin: 1em 0 .5em 10%;
+    display: flex;
+}
+
+.search-box > * {
+    text-decoration: none;
+    -moz-border-radius: 0.3em;
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.5em;
+    margin: 0.2em 1em 0.2em 0;
+}
+
+.submit:hover {
+    background-color: #999999;
+    text-shadow: #ffffff;
+}
+
+.submit:focus {
+    background-color: #707070;
+    text-shadow: #ffffff;
+}
+
+.result-description {
+    margin: 1em 0 .5em 10%;
+    font-size: large;
+}
+
+.edit {
+    margin-left: 0;
+}
