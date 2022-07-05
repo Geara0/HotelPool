@@ -1,4 +1,4 @@
-<div class="result-description"><g:message code="com.pool.search.resultNumber" args="[collection.size]"/></div>
+<div class="result-description"><g:message code="com.pool.search.resultNumber" args="[resultCount]"/></div>
 <table>
     <thead>
     <tr>
@@ -32,3 +32,9 @@
     </g:each>
     </tbody>
 </table>
+
+<g:if test="${resultCount > 10}">
+    <div class="pagination">
+        <g:paginate controller="hotel" action="search" total="${resultCount}"/>
+    </div>
+</g:if>

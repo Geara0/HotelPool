@@ -13,14 +13,15 @@ class HotelController {
         def countryList = []
         countryList.add("all")
         countryList.addAll(Country.list())
-        def result = generateSearchResult(params.countrySelector, params.hotelField)
-        return [countryList: countryList, searchResult: result]
+        def result = generateSearchResult(params.countrySelector, params.hotelField,
+                params.max?.toInteger() ?: 10, params.offset?.toInteger() ?: 0)
+        return [countryList: countryList, searchResult: result, resultCount: result.totalCount]
     }
 
-    private static generateSearchResult(String countrySelector, String hotel) {
+    private static generateSearchResult(String countrySelector, String hotel, Integer max, Integer offset) {
         def c = Hotel.createCriteria()
 
-        def result = c.list {
+        def result = c.list(max: max, offset: offset) {
             if (countrySelector != null && countrySelector != "all") {
                 'country' {
                     eq("name", countrySelector)
