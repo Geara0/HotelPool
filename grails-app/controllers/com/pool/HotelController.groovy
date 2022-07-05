@@ -13,7 +13,7 @@ class HotelController {
         def countryList = []
         countryList.add("all")
         countryList.addAll(Country.list())
-        def result = generateSearchResult(params.countrySelector, params.hotelField.trim())
+        def result = generateSearchResult(params.countrySelector, params.hotelField)
         return [countryList: countryList, searchResult: result]
     }
 
@@ -27,8 +27,10 @@ class HotelController {
                 }
             }
 
-            if (hotel != null && hotel != "") {
-                ilike("name", "%${hotel}%")
+            if (hotel != null) {
+                hotel = hotel.trim()
+                if (hotel != "")
+                    ilike("name", "%${hotel}%")
             }
 
             order("stars", "desc")
