@@ -10,7 +10,7 @@
         <g:each in="${collection}" var="hotel" status="i">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                 <td>${hotel.name}</td>
-                <td>${hotel.country}</td>
+                <td>${hotel.country.name}</td>
                 <td>
                     <g:each in="${(1..hotel.stars)}">
                         <asset:image src="star-filled.png" alt="filled star"/>

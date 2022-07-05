@@ -17,7 +17,8 @@
         <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
         </g:if>
-        <f:display bean="hotel"/>
+        <f:display bean="hotel" property="country"/>
+        <f:display bean="hotel" except="['country']"/>
         <g:form resource="${this.hotel}" method="DELETE">
             <fieldset class="buttons">
                 <g:link class="edit" action="edit" resource="${this.hotel}">

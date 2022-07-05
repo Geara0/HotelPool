@@ -14,6 +14,4 @@ class Hotel {
         stars nullable: false, blank: false, min: 1, max: 5
         link nullable: true, blank: true
     }
-
-    String toString() { return name }
 }
