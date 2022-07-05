@@ -10,7 +10,7 @@
 <body>
 <g:form class="search-box" name="searchForm" action="searchResult" method="GET">
     <g:textField name="hotelField" placeholder="${message(code: 'com.pool.search.hotelField.placeholder')}"/>
-    <g:select name="countrySelector" from="${countryList}"/>
+    <g:select name="countrySelector" from="${countryList}" optionKey="name" optionValue="name"/>
     <g:actionSubmit class="submit" name="searchButton" value="${message(code: 'com.pool.search.button.search')}"
                     action="search"/>
 </g:form>

@@ -10,7 +10,18 @@ class CountryController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index() {
-        respond countryService.list(params), model: [countryCount: countryService.count()]
+        def hotelsMap = [:]
+        for (countryObj in Country.list()) {
+            def c = Hotel.createCriteria()
+
+            hotelsMap[countryObj.name] = c.list {
+                'country' {
+                    eq('name', countryObj.name)
+                }
+//                order('name', 'desc')
+            }
+        }
+        respond countryService.list(params), model: [countryCount: countryService.count(), hotelsMap: hotelsMap]
     }
 
     def show(Long id) {

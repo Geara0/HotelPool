@@ -18,9 +18,8 @@
             <td>${country.capital}</td>
             <td>
                 <ul class="scrollable">
-                    <g:set var="hotels" value="${country.hotels.sort({ e -> e.name })}"/>
-                    <g:each in="${hotels}" var="hotel">
-                        <li>${hotel}</li>
+                    <g:each action="index" in="${hotelsMap[country.name]}" var="hotel">
+                        <li>${hotel.name}</li>
                     </g:each>
                 </ul>
             </td>

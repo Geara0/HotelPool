@@ -11,7 +11,7 @@ class HotelController {
 
     def search() {
         def countryList = []
-        countryList.add("all")
+//      TODO: countryList.add("all")
         countryList.addAll(Country.list())
         def result = generateSearchResult(params.countrySelector, params.hotelField,
                 params.max?.toInteger() ?: 10, params.offset?.toInteger() ?: 0)
@@ -34,7 +34,10 @@ class HotelController {
                     ilike("name", "%${hotel}%")
             }
 
-            order("stars", "desc")
+            and {
+                order("stars", "desc")
+                order("name", "asc")
+            }
         }
 
         return result
@@ -45,7 +48,8 @@ class HotelController {
     }
 
     def show(Long id) {
-        respond hotelService.get(id)
+        def hotel = hotelService.get(id)
+        respond hotel, model: [countryName: hotel.country.name]
     }
 
     def create() {
@@ -75,7 +79,7 @@ class HotelController {
     }
 
     def edit(Long id) {
-        respond hotelService.get(id)
+        respond hotelService.get(id), model: [countryList: Country.list()]
     }
 
     def update(Hotel hotel) {
