@@ -13,25 +13,28 @@ class HotelController {
         def countryList = []
         countryList.add("all")
         countryList.addAll(Country.list())
-        def result = generateSearchResult(params.countrySelector, params.hotelField)
+        def result = generateSearchResult(params.countrySelector, params.hotelField.trim())
         return [countryList: countryList, searchResult: result]
     }
 
-    private static generateSearchResult(String country, String hotel) {
-        def preResult = Hotel.list()
+    private static generateSearchResult(String countrySelector, String hotel) {
+        def c = Hotel.createCriteria()
 
-        if (country != null && country != "all")
-            preResult = Hotel.findAllByCountry(Country.findByName(country))
+        def result = c.list {
+            if (countrySelector != null && countrySelector != "all") {
+                'country' {
+                    eq("name", countrySelector)
+                }
+            }
 
-        def result = []
-        if (hotel != null && hotel != "") {
-            for (it in preResult)
-                if (it.name.contains(hotel))
-                    result.add(it)
-        } else
-            return preResult.sort({ e -> -e.stars })
+            if (hotel != null && hotel != "") {
+                ilike("name", "%${hotel}%")
+            }
 
-        return result.size() > 0 ? result.sort({ e -> -e.stars }) : null
+            order("stars", "desc")
+        }
+
+        return result
     }
 
     def index() {

@@ -14,7 +14,7 @@
     <g:actionSubmit class="submit" name="searchButton" value="${message(code: 'com.pool.search.button.search')}"
                     action="search"/>
 </g:form>
-<g:if test="${searchResult != null}">
+<g:if test="${searchResult.size() != 0}">
     <f:table collection="${searchResult}" template="searchTable"/>
 </g:if>
 <g:else>
